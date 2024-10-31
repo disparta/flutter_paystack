@@ -12,7 +12,7 @@ class CardInputWidget extends StatefulWidget {
 
   @override
   _CardInputWidgetState createState() {
-    return new _CardInputWidgetState();
+    return  _CardInputWidgetState();
   }
 }
 
@@ -25,32 +25,32 @@ class _CardInputWidgetState extends BaseState<CardInputWidget> {
 
   @override
   Widget buildChild(BuildContext context) {
-    return new CustomAlertDialog(
-      content: new SingleChildScrollView(
-        child: new Container(
+    return  CustomAlertDialog(
+      content:  SingleChildScrollView(
+        child:  Container(
           padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
           alignment: Alignment.center,
-          child: new Column(
+          child:  Column(
             children: <Widget>[
-              new Text(
+               Text(
                 'Please, provide valid card details.',
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontWeight: FontWeight.w500),
               ),
-              new SizedBox(
+               SizedBox(
                 height: 35.0,
               ),
-              new CardInput(
+               CardInput(
                 buttonText: 'Continue',
                 card: widget.card,
                 onValidated: _onCardValidated,
               ),
-              new SizedBox(
+               SizedBox(
                 height: 10.0,
               ),
-              new Container(
+               Container(
                 padding: const EdgeInsets.only(top: 10.0),
-                child: new WhiteButton(
+                child:  WhiteButton(
                   onPressed: onCancelPress,
                   text: 'Cancel',
                   flat: true,

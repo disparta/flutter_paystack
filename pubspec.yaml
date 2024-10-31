@@ -21,13 +21,13 @@ dev_dependencies:
 flutter:
   plugin:
     platforms:
-      android:
-        package: co.paystack.flutterpaystack
-        pluginClass:  FlutterPaystackPlugin
+      #android:
+      #  package: co.paystack.flutterpaystack
+      #  pluginClass:  FlutterPaystackPlugin
       ios:
         pluginClass:  FlutterPaystackPlugin
-      macos:
-        pluginClass: FlutterPaystackPlugin
+      #macos:
+      #  pluginClass: FlutterPaystackPlugin
 
   assets:
    - assets/images/
@@ -35,5 +35,5 @@ flutter:
 
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
   flutter: ">=2.0.0"

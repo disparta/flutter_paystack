@@ -26,6 +26,8 @@ flutter:
         pluginClass:  FlutterPaystackPlugin
       ios:
         pluginClass:  FlutterPaystackPlugin
+      macos:
+        pluginClass: FlutterPaystackPlugin
 
   assets:
    - assets/images/

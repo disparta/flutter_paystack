@@ -94,7 +94,7 @@ class _CheckoutWidgetState extends BaseState<CheckoutWidget>
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Row(
+        const Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -109,24 +109,24 @@ class _CheckoutWidgetState extends BaseState<CheckoutWidget>
             )
           ],
         ),
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             if (widget.logo != null)
               Padding(
-                padding: EdgeInsetsDirectional.only(end: 3),
+                padding: const EdgeInsetsDirectional.only(end: 3),
                 child: Image.asset(
                   'assets/images/paystack_icon.png',
-                  key: Key("PaystackBottomIcon"),
+                  key: const Key("PaystackBottomIcon"),
                   package: 'flutter_paystack',
                   height: 16,
                 ),
               ),
             Image.asset(
               'assets/images/paystack.png',
-              key: Key("PaystackLogo"),
+              key: const Key("PaystackLogo"),
               package: 'flutter_paystack',
               height: 15,
             )
@@ -134,20 +134,20 @@ class _CheckoutWidgetState extends BaseState<CheckoutWidget>
         )
       ],
     );
-    return new CustomAlertDialog(
+    return  CustomAlertDialog(
       expanded: true,
       fullscreen: widget.fullscreen,
-      titlePadding: EdgeInsets.all(0.0),
+      titlePadding: const EdgeInsets.all(0.0),
       onCancelPress: onCancelPress,
       title: _buildTitle(),
-      content: new Container(
-        child: new SingleChildScrollView(
+      content: Container(
+        child:  SingleChildScrollView(
           child: GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
             behavior: HitTestBehavior.translucent,
             child: new Container(
                 padding: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 10.0),
+                    vertical: 10.0, horizontal: 10.0,),
                 child: Column(
                   children: <Widget>[
                     _showProcessingError()
@@ -155,7 +155,7 @@ class _CheckoutWidgetState extends BaseState<CheckoutWidget>
                         : _paymentSuccessful
                             ? _buildSuccessfulWidget()
                             : _methodWidgets[_currentIndex!].child,
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     securedWidget
                   ],
                 )),
@@ -173,7 +173,7 @@ class _CheckoutWidgetState extends BaseState<CheckoutWidget>
         if (!widget.hideEmail && _charge.email != null)
           Text(
             _charge.email!,
-            key: Key("ChargeEmail"),
+            key: const Key("ChargeEmail"),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
@@ -181,7 +181,7 @@ class _CheckoutWidgetState extends BaseState<CheckoutWidget>
           ),
         if (!widget.hideAmount && !_charge.amount.isNegative)
           Row(
-            key: Key("DisplayAmount"),
+            key: const Key("DisplayAmount"),
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -190,7 +190,7 @@ class _CheckoutWidgetState extends BaseState<CheckoutWidget>
                 style: TextStyle(
                     fontSize: 14.0, color: context.textTheme().headlineMedium?.color),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5.0,
               ),
               Flexible(
@@ -216,13 +216,13 @@ class _CheckoutWidgetState extends BaseState<CheckoutWidget>
               if (widget.logo == null)
                 Image.asset(
                   'assets/images/paystack_icon.png',
-                  key: Key("PaystackIcon"),
+                  key: const Key("PaystackIcon"),
                   package: 'flutter_paystack',
                   width: 25,
                 )
               else
                 SizedBox(
-                  key: Key("Logo"),
+                  key: const Key("Logo"),
                   child: widget.logo,
                 ),
               new SizedBox(
@@ -296,7 +296,7 @@ class _CheckoutWidgetState extends BaseState<CheckoutWidget>
           text: 'Card',
           icon: Icons.credit_card,
           child: new CardCheckout(
-            key: Key("CardCheckout"),
+            key: const Key("CardCheckout"),
             publicKey: widget.publicKey,
             service: widget.cardsService,
             charge: _charge,

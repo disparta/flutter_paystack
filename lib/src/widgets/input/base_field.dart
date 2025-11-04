@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_paystack/src/widgets/common/extensions.dart';
 
 class BaseTextField extends StatelessWidget {
   final Widget? suffix;
@@ -34,24 +33,8 @@ class BaseTextField extends StatelessWidget {
       maxLines: 1,
       initialValue: initialValue,
       keyboardType: TextInputType.number,
-      decoration: new InputDecoration(
-        border: OutlineInputBorder(),
+      decoration: InputDecoration(
         labelText: labelText,
-        labelStyle: const TextStyle(color: Colors.grey, fontSize: 14.0),
-        suffixIcon: suffix == null
-            ? null
-            : new Padding(
-                padding: const EdgeInsetsDirectional.only(end: 12.0),
-                child: suffix,
-              ),
-        errorStyle: const TextStyle(fontSize: 12.0),
-        errorMaxLines: 3,
-        isDense: true,
-        enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.grey, width: 0.5)),
-        focusedBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: context.colorScheme().secondary, width: 1.0)),
         hintText: hintText,
       ),
     );

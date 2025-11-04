@@ -192,7 +192,7 @@ class _Paystack {
     CheckoutResponse? response = await showDialog(
       barrierDismissible: false,
       context: context,
-      builder: (BuildContext context) => new CheckoutWidget(
+      builder: (BuildContext context) => CheckoutWidget(
         publicKey: publicKey,
         bankService: BankService(),
         cardsService: CardService(),

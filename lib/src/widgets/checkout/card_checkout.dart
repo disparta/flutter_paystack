@@ -47,20 +47,20 @@ class _CardCheckoutState extends BaseCheckoutMethodState<CardCheckout> {
     var amountText =
         _charge.amount.isNegative ? '' : Utils.formatAmount(_charge.amount);
 
-    return new Container(
+    return Container(
       alignment: Alignment.center,
-      child: new Column(
+      child: Column(
         children: <Widget>[
-          new Text(
+           Text(
             Strings.cardInputInstruction,
-            key: Key("InstructionKey"),
-            style: const TextStyle(fontWeight: FontWeight.w500),
+            key: const Key("InstructionKey"),
+            style:  Theme.of(context).textTheme.titleMedium,
           ),
-          new SizedBox(
+          const SizedBox(
             height: 20.0,
           ),
-          new CardInput(
-            key: Key("CardInput"),
+           CardInput(
+            key: const Key("CardInput"),
             buttonText: widget.hideAmount ? "Continue" : 'Pay $amountText',
             card: _charge.card,
             onValidated: _onCardValidated,
@@ -81,7 +81,7 @@ class _CardCheckoutState extends BaseCheckoutMethodState<CardCheckout> {
       _chargeCard(_charge);
     } else {
       // This should never happen. Validation has already been done in [PaystackPlugin .checkout]
-      throw new ChargeException(Strings.noAccessCodeReference);
+      throw ChargeException(Strings.noAccessCodeReference);
     }
   }
 

@@ -19,7 +19,7 @@ class WhiteButton extends _BaseButton {
           text: text,
           child: child,
           iconData: iconData,
-          textStyle: new TextStyle(
+          textStyle: TextStyle(
               fontSize: 14.0,
               color: Colors.black87.withOpacity(0.8),
               fontWeight: bold ? FontWeight.bold : FontWeight.normal),
@@ -79,52 +79,85 @@ class _BaseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const borderRadius = const BorderRadius.all(Radius.circular(5.0));
+    const borderRadius = BorderRadius.all(Radius.circular(5.0));
     var textWidget;
     if (text != null) {
-      textWidget = new Text(
+      textWidget = Text(
         text!,
         textAlign: TextAlign.center,
         style: textStyle,
       );
     }
-    return new Container(
-        width: double.infinity,
-        height: 50.0,
-        alignment: Alignment.center,
-        decoration: new BoxDecoration(
-          borderRadius: borderRadius,
-          color: color,
+
+    return SizedBox(
+      width: double.infinity,
+      child: MaterialButton(
+        onPressed: onPressed,
+        color: Theme.of(context).colorScheme.primary,
+        height: 60,
+        disabledColor: Colors.grey[500],
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
         ),
-        child: new Container(
-          width: double.infinity,
-          height: double.infinity,
-          child: new TextButton(
-              onPressed: showProgress ? null : onPressed,
-              child: showProgress
-                  ? new Container(
-                      width: 20.0,
-                      height: 20.0,
-                      child: new CircularProgressIndicator(
-                        strokeWidth: 2.0,
-                        color: Colors.white,
-                      ),
-                    )
-                  : iconData == null
-                      ? child == null
-                          ? textWidget
-                          : child!
-                      : new Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            new Icon(
-                              iconData,
-                              color: textStyle.color!.withOpacity(0.5),
-                            ),
-                            const SizedBox(width: 2.0),
-                            textWidget,
-                          ],
-                        )),
-        ));
+        child: showProgress
+            ? const SizedBox(
+                width: 20.0,
+                height: 20.0,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2.0,
+                  color: Colors.white,
+                ),
+              )
+            : Text(
+                text!,
+                textAlign: TextAlign.center,
+                // style: textStyle,
+                style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
+              ),
+      ),
+    );
+
+    return Container(
+      width: double.infinity,
+      height: 50.0,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        borderRadius: borderRadius,
+        color: color,
+      ),
+      child: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: TextButton(
+          onPressed: showProgress ? null : onPressed,
+          child: showProgress
+              ? const SizedBox(
+                  width: 20.0,
+                  height: 20.0,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2.0,
+                    color: Colors.white,
+                  ),
+                )
+              : iconData == null
+                  ? child == null
+                      ? textWidget
+                      : child!
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(
+                          iconData,
+                          color: textStyle.color!.withOpacity(0.5),
+                        ),
+                        const SizedBox(width: 2.0),
+                        textWidget,
+                      ],
+                    ),
+        ),
+      ),
+    );
   }
 }
